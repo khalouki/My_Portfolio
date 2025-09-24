@@ -3,12 +3,14 @@ import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
-import { 
-  Code2, 
-  Database, 
-  Server, 
-  Brain, 
-  Globe, 
+import BlurText from "./ui/BlurText";
+
+import {
+  Code2,
+  Database,
+  Server,
+  Brain,
+  Globe,
   Wrench,
   Coffee,
   FileCode,
@@ -44,7 +46,7 @@ export function SkillsSection() {
       ]
     },
     {
-      name: "Frontend Development", 
+      name: "Frontend Development",
       icon: Globe,
       skills: [
         { name: "React", level: 90, icon: Layers, category: "frontend" },
@@ -107,23 +109,36 @@ export function SkillsSection() {
   }, []);
 
   return (
+
     <section id="skills" className="py-24 bg-muted/30">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
-            Technical Skills
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            My expertise across different technologies and frameworks
-          </p>
+          {/* Title */}
+          <BlurText
+            text="Technical Skills"
+            delay={150}
+            animateBy="words"
+            direction="top"
+            
+            className="block text-3xl md:text-4xl font-bold mb-4 text-foreground"
+          />
+
+          {/* Paragraph */}
+          <BlurText
+            text="My expertise across different technologies and frameworks"
+            delay={160}
+            animateBy="words"
+            direction="top"
+            className="block text-xl text-muted-foreground max-w-2xl mx-auto"
+          />
         </div>
 
         <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {skillCategories.map((category, categoryIndex) => {
             const IconComponent = category.icon;
             return (
-              <Card 
-                key={categoryIndex} 
+              <Card
+                key={categoryIndex}
                 className="hover-elevate transition-all duration-300 animate__animated animate__slideInUp border-card-border"
                 style={{ animationDelay: `${categoryIndex * 200}ms` }}
                 data-testid={`card-skills-${categoryIndex}`}
@@ -141,10 +156,10 @@ export function SkillsSection() {
                     const globalSkillIndex = categoryIndex * 10 + skillIndex;
                     const isVisible = visibleSkills.has(globalSkillIndex);
                     const SkillIcon = skill.icon;
-                    
+
                     return (
-                      <div 
-                        key={skillIndex} 
+                      <div
+                        key={skillIndex}
                         className="space-y-2"
                         data-skill-index={globalSkillIndex}
                         data-testid={`skill-${skill.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
@@ -160,8 +175,8 @@ export function SkillsSection() {
                             {skill.level}%
                           </Badge>
                         </div>
-                        <Progress 
-                          value={isVisible ? skill.level : 0} 
+                        <Progress
+                          value={isVisible ? skill.level : 0}
                           className="h-2 transition-all duration-1000 ease-out"
                         />
                       </div>
@@ -174,5 +189,6 @@ export function SkillsSection() {
         </div>
       </div>
     </section>
+
   );
 }

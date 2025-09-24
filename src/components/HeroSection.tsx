@@ -3,7 +3,8 @@
 import { Button } from "@/components/ui/button";
 import { Github, ArrowDown } from "lucide-react";
 import dynamic from "next/dynamic";
-
+import BlurText from "./ui/BlurText";
+import ShinyText from './ui/ShinyText';
 const Player = dynamic(
   () => import("@lottiefiles/react-lottie-player").then((mod) => mod.Player),
   { ssr: false }
@@ -26,10 +27,11 @@ export function HeroSection() {
         <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16">
           {/* Profile Image */}
           <div className="relative animate__animated animate__zoomIn">
+
             <Player
               autoplay
               loop
-              src="./user.json"
+              src="/users.json"
               style={{ height: "256px", width: "256px" }}
               className="rounded-full object-cover border-4 border-primary/20 shadow-2xl"
               data-testid="lottie-profile"
@@ -40,13 +42,26 @@ export function HeroSection() {
 
           {/* Content */}
           <div className="text-center lg:text-left max-w-2xl">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent animate__animated animate__fadeInRight">
-              Abdelkhalk Essaid
-            </h1>
+            <BlurText
+              text="ABDELKHALEK ESSAID"
+              delay={150}
+              animateBy="words"
+              direction="top"
+              className="text-4xl md:text-4xl lg:text-5xl font-bold mb-6
+             bg-gradient-to-r from-primary to-primary/70
+             bg-clip-text text-transparent
+             text-left" // 👈 force left alignment
+            />
+
 
             <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground mb-8 leading-relaxed animate__animated animate__fadeInRight animate__delay-1s">
-              Full Stack Developer | Backend (Spring Boot, Flask, PHP) | Frontend
-              React | Machine Learning
+              <ShinyText
+                text="Full Stack Developer | Backend (Spring Boot, Flask, PHP) | Frontend
+                  React | Machine Learning"
+                disabled={false}
+                speed={3}
+                className='custom-class'
+              />
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-8 animate__animated animate__fadeInUp animate__delay-2s">

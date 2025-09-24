@@ -55,6 +55,15 @@ const config: Config = {
         sans: ['Inter', 'sans-serif'],
         mono: ['Fira Code', 'monospace'],
       },
+      keyframes: {
+        shine: {
+          '0%': { backgroundPosition: '-200% 0' },
+          '100%': { backgroundPosition: '200% 0' },
+        },
+      },
+      animation: {
+        shine: 'shine linear infinite',
+      },
     },
   },
 

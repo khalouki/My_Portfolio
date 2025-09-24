@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { useMutation } from "@tanstack/react-query";
+import BlurText from "./ui/BlurText";
 import { Mail, MapPin, Phone, Send, Github, Linkedin, AlertCircle } from "lucide-react";
 
 interface ContactForm {
@@ -40,13 +41,13 @@ export function ContactSection() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-      
+
       const result = await response.json();
-      
+
       if (!response.ok) {
         throw result;
       }
-      
+
       return result;
     },
     onSuccess: (data) => {
@@ -67,7 +68,7 @@ export function ContactSection() {
         });
         setErrors(fieldErrors);
       }
-      
+
       toast({
         title: "Error sending message",
         description: error.message || "Please try again later.",
@@ -79,7 +80,7 @@ export function ContactSection() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setForm(prev => ({ ...prev, [name]: value }));
-    
+
     // Clear error when user starts typing
     if (errors[name as keyof FormErrors]) {
       setErrors(prev => ({ ...prev, [name]: undefined }));
@@ -101,7 +102,7 @@ export function ContactSection() {
     {
       icon: Phone,
       label: "Phone",
-      value: "+212 6XX XX XX XX",
+      value: "+212 653738676",
       href: "tel:+212600000000"
     },
     {
@@ -120,7 +121,7 @@ export function ContactSection() {
     },
     {
       icon: Linkedin,
-      label: "LinkedIn", 
+      label: "LinkedIn",
       href: "https://linkedin.com/in/abdelkhalk-essaid"
     },
     {
@@ -133,14 +134,20 @@ export function ContactSection() {
   return (
     <section id="contact" className="py-24">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
-            Get In Touch
-          </h2>
+        <div className="flex flex-col items-center justify-centertext-center mb-8">
+          <BlurText
+            text="Get In Touch"
+            delay={150}
+            animateBy="words"
+            direction="top"
+            className="block text-3xl md:text-4xl font-bold mb-4 text-foreground"
+          />
+
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Let's collaborate on your next project or discuss opportunities
           </p>
         </div>
+
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Information */}
@@ -163,7 +170,7 @@ export function ContactSection() {
                       <div>
                         <p className="text-sm text-muted-foreground">{item.label}</p>
                         {item.href ? (
-                          <a 
+                          <a
                             href={item.href}
                             className="text-foreground hover:text-primary transition-colors"
                             data-testid={`link-${item.label.toLowerCase()}`}
@@ -260,7 +267,7 @@ export function ContactSection() {
                     )}
                   </div>
                 </div>
-                
+
                 <div className="space-y-2">
                   <Label htmlFor="subject">Subject</Label>
                   <Input
@@ -281,7 +288,7 @@ export function ContactSection() {
                     </p>
                   )}
                 </div>
-                
+
                 <div className="space-y-2">
                   <Label htmlFor="message">Message</Label>
                   <Textarea
@@ -302,10 +309,10 @@ export function ContactSection() {
                     </p>
                   )}
                 </div>
-                
-                <Button 
-                  type="submit" 
-                  className="w-full" 
+
+                <Button
+                  type="submit"
+                  className="w-full"
                   disabled={contactMutation.isPending}
                   data-testid="button-submit"
                 >

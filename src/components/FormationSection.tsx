@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { GraduationCap, Calendar } from "lucide-react";
+import BlurText from "./ui/BlurText";
 
 interface FormationItem {
   degree: string;
@@ -69,13 +70,25 @@ export function FormationSection() {
     <section id="formation" className="py-24 bg-muted/30">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
-            Academic Formation
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            My educational journey in computer science and data science
-          </p>
+          {/* Title with gradient */}
+          <BlurText
+            text="Academic Formation"
+            delay={150}
+            animateBy="words"
+            direction="top"
+            className="block text-3xl md:text-4xl font-bold mb-4 text-foreground"
+          />
+
+          {/* Paragraph with muted color */}
+          <BlurText
+            text="My educational journey in computer science and data science"
+            delay={130}
+            animateBy="words"
+            direction="top"
+            className="text-xl text-muted-foreground max-w-2xl mx-auto"
+          />
         </div>
+
 
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {formations.map((formation, index) => {
@@ -85,9 +98,8 @@ export function FormationSection() {
                 key={index}
                 ref={el => { cardRefs.current[index] = el; }}
                 data-card-index={index}
-                className={`hover-elevate transition-all duration-300 border-card-border ${
-                  isVisible ? 'animate__animated animate__flipInY' : 'opacity-0'
-                }`}
+                className={`hover-elevate transition-all duration-300 border-card-border ${isVisible ? 'animate__animated animate__flipInY' : 'opacity-0'
+                  }`}
                 style={{ animationDelay: isVisible ? `${index * 200}ms` : '0ms' }}
                 data-testid={`card-formation-${index}`}
               >
