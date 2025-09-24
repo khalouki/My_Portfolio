@@ -134,7 +134,7 @@ export function ContactSection() {
   return (
     <section id="contact" className="py-24">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col items-center justify-centertext-center mb-8">
+        <div className="flex flex-col items-center justify-centertext-center  mb-8">
           <BlurText
             text="Get In Touch"
             delay={150}
@@ -143,7 +143,7 @@ export function ContactSection() {
             className="block text-3xl md:text-4xl font-bold mb-4 text-foreground"
           />
 
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-center text-muted-foreground max-w-2xl mx-auto">
             Let's collaborate on your next project or discuss opportunities
           </p>
         </div>
