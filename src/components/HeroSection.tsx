@@ -29,7 +29,7 @@ export function HeroSection() {
             <Player
               autoplay
               loop
-              src="/user.json"
+              src="./user.json"
               style={{ height: "256px", width: "256px" }}
               className="rounded-full object-cover border-4 border-primary/20 shadow-2xl"
               data-testid="lottie-profile"
