@@ -22,21 +22,21 @@ export function ProjectsSection() {
       name: "React_Flask_E-commerce_website",
       description: "A full-stack e-commerce website built with React and Flask, featuring user authentication, product management, shopping cart functionality, and secure payment processing.",
       technologies: ["React", "Flask", "Python", "SQLAlchemy", "JWT", "Stripe API"],
-      githubUrl: "https://github.com/abdelkhalakessaid/React_Flask_E-commerce_website",
+      githubUrl: "https://github.com/khalouki/React_Flask_E-commerce_website",
       features: ["User Authentication", "Product Catalog", "Shopping Cart", "Payment Integration", "Admin Dashboard"]
     },
     {
       name: "Python-Faculty-Schedule-App",
       description: "Python application designed to manage faculty schedules efficiently, allowing administrators to create, update, and track academic timetables with conflict detection.",
-      technologies: ["Python", "Tkinter", "SQLite", "Pandas", "DateTime"],
-      githubUrl: "https://github.com/abdelkhalakessaid/Python-Faculty-Schedule-App",
+      technologies: ["Python","flask", "jinja2 template", "SQLite", "Pandas", "Tailwind CSS"],
+      githubUrl: "https://github.com/khalouki/Python-Faculty-Schedule-App",
       features: ["Schedule Management", "Conflict Detection", "Faculty Assignment", "Time Tracking", "Export Functionality"]
     },
     {
       name: "OCP_STAGE",
       description: "Application developed during internship for managing equipment visits and maintenance schedules. Streamlines the process of tracking equipment status and scheduling inspections.",
       technologies: ["Java", "Spring Boot", "MySQL", "Thymeleaf", "Bootstrap"],
-      githubUrl: "https://github.com/abdelkhalakessaid/OCP_STAGE",
+      githubUrl: "https://github.com/khalouki/OCP_STAGE",
       features: ["Equipment Tracking", "Visit Scheduling", "Maintenance Records", "Reporting System", "User Management"]
     }
   ];
